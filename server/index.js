@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const BookSchema = require("./models/BookSchema");
 
 const app = express();
 
 const PORT = 7000;
 
+// mongoose configuration
 mongoose.connect(
   "mongodb+srv://Books:8vHJsEbU0BDyBOTW@cluster0.fvr4i.mongodb.net/test?retryWrites=true&w=majority",
   {
