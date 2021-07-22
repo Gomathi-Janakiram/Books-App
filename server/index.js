@@ -22,6 +22,14 @@ mongoose.connect(
   }
 );
 
+// middlewares
+
+app.use(express.json());
+
+// routes
+
+app.use(require("./routes/books"));
+
 app.get("/", (req, res) => {
   res.json("Hi");
 });
