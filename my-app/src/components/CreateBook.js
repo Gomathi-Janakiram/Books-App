@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CreateBook = () => {
   const [bookDetails, setBookDetails] = useState({
@@ -14,6 +14,26 @@ const CreateBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(bookDetails);
+    fetch("http://localhost:7000/create", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        title: bookDetails.title,
+        isbn: bookDetails.isbn,
+        author: bookDetails.author,
+        description: bookDetails.description,
+        published_date: bookDetails.date,
+        publisher: bookDetails.publisher,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -23,9 +43,9 @@ const CreateBook = () => {
         <div className="col-sm-6">
           <div className="mx-5">
             <div className="text-start mt-5">
-              <button className="btn btn-outline-primary">
+              <Link to="/" className="btn btn-outline-primary">
                 Show Book List
-              </button>
+              </Link>
             </div>
             <p className="fw-bold fs-1 mt-3">Add Book</p>
             <p className="fs-5">Create New Book</p>

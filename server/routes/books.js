@@ -36,7 +36,7 @@ router.post("/create", (req, res) => {
     publisher,
     updated_date,
   } = req.body;
-  console.log(req.body);
+  console.log(req);
   const book = new Books({
     title,
     isbn,

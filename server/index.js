@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const BookSchema = require("./models/BookSchema");
+const cors = require("cors");
 
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose.connect(
 // middlewares
 
 app.use(express.json());
+app.use(cors());
 
 // routes
 
